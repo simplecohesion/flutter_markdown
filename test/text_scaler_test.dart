@@ -1,6 +1,5 @@
-// Copyright 2013 The Flutter Authors. All rights reserved.
-// Use of this source code is governed by a BSD-style license that can be
-// found in the LICENSE file.
+// is simpler than casting
+// ignore_for_file: omit_local_variable_types, lines_longer_than_80_chars
 
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
@@ -14,8 +13,8 @@ void defineTests() {
     testWidgets(
       'should use style textScaler in RichText',
       (WidgetTester tester) async {
-        const scaler = TextScaler.linear(2);
-        const data = 'Hello';
+        const TextScaler scaler = TextScaler.linear(2);
+        const String data = 'Hello';
         await tester.pumpWidget(
           boilerplate(
             MarkdownBody(
@@ -25,7 +24,7 @@ void defineTests() {
           ),
         );
 
-        final richText = tester.widget(find.byType(RichText)) as RichText;
+        final RichText richText = tester.widget(find.byType(RichText));
         expect(richText.textScaler, scaler);
       },
     );
@@ -33,8 +32,8 @@ void defineTests() {
     testWidgets(
       'should use MediaQuery textScaler in RichText',
       (WidgetTester tester) async {
-        const scaler = TextScaler.linear(2);
-        const data = 'Hello';
+        const TextScaler scaler = TextScaler.linear(2);
+        const String data = 'Hello';
         await tester.pumpWidget(
           boilerplate(
             const MediaQuery(
@@ -46,7 +45,7 @@ void defineTests() {
           ),
         );
 
-        final richText = tester.widget(find.byType(RichText)) as RichText;
+        final RichText richText = tester.widget(find.byType(RichText));
         expect(richText.textScaler, scaler);
       },
     );
@@ -54,8 +53,8 @@ void defineTests() {
     testWidgets(
       'should use MediaQuery textScaler in SelectableText.rich',
       (WidgetTester tester) async {
-        const scaler = TextScaler.linear(2);
-        const data = 'Hello';
+        const TextScaler scaler = TextScaler.linear(2);
+        const String data = 'Hello';
         await tester.pumpWidget(
           boilerplate(
             const MediaQuery(
@@ -68,8 +67,9 @@ void defineTests() {
           ),
         );
 
-        final selectableText =
-            tester.widget(find.byType(SelectableText)) as SelectableText;
+        final SelectableText selectableText = tester.widget(
+          find.byType(SelectableText),
+        );
         expect(selectableText.textScaler, scaler);
       },
     );
