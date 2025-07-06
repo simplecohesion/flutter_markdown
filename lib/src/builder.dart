@@ -304,7 +304,9 @@ class MarkdownBuilder implements md.NodeVisitor {
           decoration = null;
         }
         _tables.single.rows.add(
-          TableRow(decoration: decoration),
+          // this needs to be mutable for the table to work
+          // ignore: prefer_const_literals_to_create_immutables
+          TableRow(decoration: decoration, children: <Widget>[]),
         );
       }
       final bElement = _BlockElement(tag);
