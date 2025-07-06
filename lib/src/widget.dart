@@ -64,7 +64,7 @@ typedef MarkdownImageBuilder =
 /// Signature for custom checkbox widget.
 ///
 /// Used by [MarkdownWidget.checkboxBuilder]
-typedef MarkdownCheckboxBuilder = Widget Function(bool value);
+typedef MarkdownCheckboxBuilder = Widget Function({required bool value});
 
 /// Signature for custom bullet widget.
 ///

@@ -97,13 +97,13 @@ void expectTextStrings(Iterable<Widget> widgets, List<String> strings) {
 }
 
 String _extractTextFromTextSpan(TextSpan span) {
-  var text = span.text ?? '';
+  final buffer = StringBuffer(span.text ?? '');
   if (span.children != null) {
     for (final child in span.children!.toList().cast<TextSpan>()) {
-      text += _extractTextFromTextSpan(child);
+      buffer.write(_extractTextFromTextSpan(child));
     }
   }
-  return text;
+  return buffer.toString();
 }
 
 // Check the font style and weight of the text span.
