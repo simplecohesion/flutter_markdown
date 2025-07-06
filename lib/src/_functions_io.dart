@@ -74,37 +74,38 @@ final ImageBuilder kDefaultImageBuilder =
     };
 
 /// A default error widget builder for handling image errors.
-// ignore: prefer_function_declarations_over_variables
-final ImageErrorWidgetBuilder kDefaultImageErrorWidgetBuilder =
-    (BuildContext context, Object error, StackTrace? stackTrace) {
-      return const SizedBox();
-    };
+Widget kDefaultImageErrorWidgetBuilder(
+  BuildContext context,
+  Object error,
+  StackTrace? stackTrace,
+) {
+  return const SizedBox();
+}
 
 /// A default style sheet generator.
-final MarkdownStyleSheet Function(BuildContext, MarkdownStyleSheetBaseTheme?)
-    // ignore: prefer_function_declarations_over_variables
-    kFallbackStyle =
-    (BuildContext context, MarkdownStyleSheetBaseTheme? baseTheme) {
-      MarkdownStyleSheet result;
-      switch (baseTheme) {
-        case MarkdownStyleSheetBaseTheme.platform:
-          result = (Platform.isIOS || Platform.isMacOS)
-              ? MarkdownStyleSheet.fromCupertinoTheme(
-                  CupertinoTheme.of(context),
-                )
-              : MarkdownStyleSheet.fromTheme(Theme.of(context));
-        case MarkdownStyleSheetBaseTheme.cupertino:
-          result = MarkdownStyleSheet.fromCupertinoTheme(
-            CupertinoTheme.of(context),
-          );
-        case MarkdownStyleSheetBaseTheme.material:
-        // ignore: no_default_cases
-        default:
-          result = MarkdownStyleSheet.fromTheme(Theme.of(context));
-      }
+MarkdownStyleSheet kFallbackStyle(
+  BuildContext context,
+  MarkdownStyleSheetBaseTheme? baseTheme,
+) {
+  MarkdownStyleSheet result;
+  switch (baseTheme) {
+    case MarkdownStyleSheetBaseTheme.platform:
+      result = (Platform.isIOS || Platform.isMacOS)
+          ? MarkdownStyleSheet.fromCupertinoTheme(
+              CupertinoTheme.of(context),
+            )
+          : MarkdownStyleSheet.fromTheme(Theme.of(context));
+    case MarkdownStyleSheetBaseTheme.cupertino:
+      result = MarkdownStyleSheet.fromCupertinoTheme(
+        CupertinoTheme.of(context),
+      );
+    case MarkdownStyleSheetBaseTheme.material:
+    case null:
+      result = MarkdownStyleSheet.fromTheme(Theme.of(context));
+  }
 
-      return result.copyWith(textScaler: MediaQuery.textScalerOf(context));
-    };
+  return result.copyWith(textScaler: MediaQuery.textScalerOf(context));
+}
 
 Widget _handleDataSchemeUri(
   Uri uri,
