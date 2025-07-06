@@ -718,7 +718,7 @@ class MarkdownBuilder implements md.NodeVisitor {
 
   Widget _buildCheckbox(bool checked) {
     if (checkboxBuilder != null) {
-      return checkboxBuilder!(checked);
+      return checkboxBuilder!(value: checked);
     }
     return Padding(
       padding: styleSheet.listBulletPadding!,

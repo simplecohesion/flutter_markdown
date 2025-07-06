@@ -13,6 +13,8 @@ linter:
   rules:
 
 analyzer:
+  errors:
+    avoid_catches_without_on_clauses: ignore
   exclude:
     [
       .cursorrules,
