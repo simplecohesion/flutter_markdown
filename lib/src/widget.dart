@@ -248,7 +248,6 @@ abstract class MarkdownWidget extends StatefulWidget {
     this.blockSyntaxes,
     this.inlineSyntaxes,
     this.extensionSet,
-    @Deprecated('Use sizedImageBuilder instead') this.imageBuilder,
     this.sizedImageBuilder,
     this.checkboxBuilder,
     this.bulletBuilder,
@@ -309,10 +308,6 @@ abstract class MarkdownWidget extends StatefulWidget {
   ///
   /// Defaults to [md.ExtensionSet.gitHubFlavored]
   final md.ExtensionSet? extensionSet;
-
-  /// {@macro flutter_markdown.builder.MarkdownBuilder.imageBuilder}
-  @Deprecated('Use sizedImageBuilder instead')
-  final MarkdownImageBuilder? imageBuilder;
 
   /// {@macro flutter_markdown.builder.MarkdownBuilder.sizedImageBuilder}
   final MarkdownSizedImageBuilder? sizedImageBuilder;
@@ -504,7 +499,6 @@ class MarkdownBody extends MarkdownWidget {
     super.blockSyntaxes,
     super.inlineSyntaxes,
     super.extensionSet,
-    @Deprecated('Use sizedImageBuilder instead.') super.imageBuilder,
     super.sizedImageBuilder,
     super.checkboxBuilder,
     super.bulletBuilder,
